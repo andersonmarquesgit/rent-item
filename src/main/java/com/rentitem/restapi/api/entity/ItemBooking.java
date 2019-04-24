@@ -30,4 +30,7 @@ public class ItemBooking {
 	
 	@Column(name = "dt_booking", columnDefinition = "TIMESTAMP")
     private LocalDateTime dtBooking;
+	
+	@Column(name = "dt_schedule", columnDefinition = "TIMESTAMP")
+    private LocalDateTime dtSchedule;
 }
