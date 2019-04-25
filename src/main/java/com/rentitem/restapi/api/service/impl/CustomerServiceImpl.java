@@ -3,11 +3,13 @@ package com.rentitem.restapi.api.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.rentitem.restapi.api.entity.Customer;
 import com.rentitem.restapi.api.repository.CustomerRepository;
 import com.rentitem.restapi.api.service.CustomerService;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
