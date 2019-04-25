@@ -30,4 +30,7 @@ public class ItemRent {
 	
 	@Column(name = "dt_rent", columnDefinition = "TIMESTAMP")
     private LocalDateTime dtRent;
+	
+	@Column(name = "dt_return", columnDefinition = "TIMESTAMP")
+    private LocalDateTime dtReturn;
 }
