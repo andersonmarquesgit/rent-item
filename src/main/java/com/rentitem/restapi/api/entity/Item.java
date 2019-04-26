@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,11 +25,10 @@ public class Item {
 	@Column(name = "description")
 	private String description;
 	
-	@NotBlank(message = "Price required")
 	@Column(name = "price")
 	private Double price;
 	
 	@ManyToOne
-	@JoinColumn(name="item_type_id")
+    @JoinColumn(name="item_type_id")
 	private ItemType itemType;
 }

@@ -151,6 +151,7 @@ public class ItemController {
 			result.addError(new ObjectError("Item", "Item type no exists"));
 		} 
 		
+		item.setId(itemRequest.getId());
 		item.setDescription(itemRequest.getDescription());
 		item.setPrice(itemRequest.getPrice());
 		item.setItemType(itemType);
