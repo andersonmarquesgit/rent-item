@@ -1,5 +1,7 @@
 package com.rentitem.restapi.api.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.rentitem.restapi.api.entity.Item;
@@ -14,4 +16,5 @@ public interface ItemService {
 	
 	Page<Item> findAll(int page, int count);
 	
+	List<Item> findItemRentDevolutionPerPeriod();
 }

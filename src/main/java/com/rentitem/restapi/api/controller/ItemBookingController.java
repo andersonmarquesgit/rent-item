@@ -100,6 +100,8 @@ public class ItemBookingController {
 			result.addError(new ObjectError("ItemBooking", "Item booking already exists"));
 		}else if(this.itemRentService.findByItemId(itemRequest.getId()) != null) {
 			result.addError(new ObjectError("ItemBooking", "Item rent exists"));
+		}else if(this.itemService.findById(itemRequest.getId()) == null) {
+			result.addError(new ObjectError("ItemRent", "Item not exists"));
 		}
 	}
 

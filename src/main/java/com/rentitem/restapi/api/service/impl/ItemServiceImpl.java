@@ -1,5 +1,8 @@
 package com.rentitem.restapi.api.service.impl;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,4 +38,10 @@ public class ItemServiceImpl implements ItemService {
 		return this.itemRepository.findAll(PageRequest.of(page, count));
 	}
 
+	@Override
+	public List<Item> findItemRentDevolutionPerPeriod() {
+		LocalDateTime startDate = LocalDateTime.now();
+		LocalDateTime finishDate = startDate.plusWeeks(1L);
+		return this.itemRepository.findItemRentDevolutionPerPeriod(startDate, finishDate);
+	}
 }

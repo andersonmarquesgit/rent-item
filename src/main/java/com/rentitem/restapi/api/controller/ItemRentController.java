@@ -95,11 +95,13 @@ public class ItemRentController {
 
 	private void validateCreateItemRent(ItemRequest itemRequest, BindingResult result) {
 		if (itemRequest.getId() == null) {
-			result.addError(new ObjectError("ItemBooking", "ItemID no information"));
+			result.addError(new ObjectError("ItemRent", "ItemID no information"));
 		}else if (this.itemBookingService.findByItemId(itemRequest.getId()) != null) {
-			result.addError(new ObjectError("ItemBooking", "Item booking already exists"));
+			result.addError(new ObjectError("ItemRent", "Item booking already exists"));
 		}else if(this.itemRentService.findByItemId(itemRequest.getId()) != null) {
-			result.addError(new ObjectError("ItemBooking", "Item rent exists"));
+			result.addError(new ObjectError("ItemRent", "Item rent exists"));
+		}else if(this.itemService.findById(itemRequest.getId()) == null) {
+			result.addError(new ObjectError("ItemRent", "Item not exists"));
 		}
 	}
 
