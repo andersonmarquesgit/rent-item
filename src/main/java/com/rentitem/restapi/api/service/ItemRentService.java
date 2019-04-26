@@ -14,4 +14,5 @@ public interface ItemRentService {
 	
 	Page<ItemRent> findAll(int page, int count);
 	
+	ItemRent findByItemId(String id);
 }

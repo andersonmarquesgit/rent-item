@@ -35,4 +35,9 @@ public class ItemRentServiceImpl implements ItemRentService {
 		return this.itemRentRepository.findAll(PageRequest.of(page, count));
 	}
 
+	@Override
+	public ItemRent findByItemId(String id) {
+		return this.itemRentRepository.findByItemId(id);
+	}
+
 }

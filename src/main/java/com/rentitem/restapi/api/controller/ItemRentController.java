@@ -26,6 +26,7 @@ import com.rentitem.restapi.api.entity.Item;
 import com.rentitem.restapi.api.entity.ItemRent;
 import com.rentitem.restapi.api.request.ItemRequest;
 import com.rentitem.restapi.api.response.Response;
+import com.rentitem.restapi.api.service.ItemBookingService;
 import com.rentitem.restapi.api.service.ItemRentService;
 import com.rentitem.restapi.api.service.ItemService;
 
@@ -49,6 +50,9 @@ public class ItemRentController {
 	
 	@Autowired
 	private ItemRentService itemRentService;
+	
+	@Autowired
+	private ItemBookingService itemBookingService;
 	
 	@PostMapping
 	@PreAuthorize("hasAnyRole('ADMIN')") 
@@ -92,8 +96,11 @@ public class ItemRentController {
 	private void validateCreateItemRent(ItemRequest itemRequest, BindingResult result) {
 		if (itemRequest.getId() == null) {
 			result.addError(new ObjectError("ItemBooking", "ItemID no information"));
+		}else if (this.itemBookingService.findByItemId(itemRequest.getId()) != null) {
+			result.addError(new ObjectError("ItemBooking", "Item booking already exists"));
+		}else if(this.itemRentService.findByItemId(itemRequest.getId()) != null) {
+			result.addError(new ObjectError("ItemBooking", "Item rent exists"));
 		}
-		//TODO:adicionar validação de item reservado e item alugado
 	}
 
 	@DeleteMapping(value = "{id}")

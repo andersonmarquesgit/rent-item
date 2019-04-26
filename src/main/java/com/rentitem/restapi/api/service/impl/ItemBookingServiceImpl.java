@@ -35,4 +35,9 @@ public class ItemBookingServiceImpl implements ItemBookingService {
 		return this.itemBookingRepository.findAll(PageRequest.of(page, count));
 	}
 
+	@Override
+	public ItemBooking findByItemId(String id) {
+		return this.itemBookingRepository.findByItemId(id);
+	}
+
 }

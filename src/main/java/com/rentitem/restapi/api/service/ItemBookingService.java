@@ -14,4 +14,6 @@ public interface ItemBookingService {
 	
 	Page<ItemBooking> findAll(int page, int count);
 	
+	ItemBooking findByItemId(String id);
+	
 }
