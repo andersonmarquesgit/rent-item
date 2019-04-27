@@ -15,4 +15,7 @@ public interface ItemRepository extends JpaRepository<Item, String> {
 	
 	@Query("SELECT i FROM Item i JOIN ItemRent ir ON i.id = ir.item.id WHERE ir.dtReturn BETWEEN :startDate AND :finishDate")
 	List<Item> findItemRentDevolutionPerPeriod(@Param("startDate") LocalDateTime startDate, @Param("finishDate") LocalDateTime finishDate);
+	
+	@Query("SELECT i FROM Item i JOIN ItemRent ir ON i.id = ir.item.id WHERE ir.dtRent BETWEEN :startDate AND :finishDate")
+	List<Item> findItemRentPerPeriod(@Param("startDate") LocalDateTime startDate, @Param("finishDate") LocalDateTime finishDate);
 }

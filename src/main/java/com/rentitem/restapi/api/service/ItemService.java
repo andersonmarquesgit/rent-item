@@ -17,4 +17,6 @@ public interface ItemService {
 	Page<Item> findAll(int page, int count);
 	
 	List<Item> findItemRentDevolutionPerPeriod();
+	
+	List<Item> findItemRentPerPeriod();
 }

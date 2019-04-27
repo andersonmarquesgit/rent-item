@@ -77,6 +77,10 @@ public class CustomerController {
 	}
 
 	private void validateCreateCustomer(Customer customer, BindingResult result) {
+		if (customer.getName() == null) {
+			result.addError(new ObjectError("Customer", "Name no information"));
+		}
+		
 		if (customer.getEmail() == null) {
 			result.addError(new ObjectError("Customer", "Email no information"));
 		}
@@ -117,6 +121,9 @@ public class CustomerController {
 	private void validateUpdateCustomer(Customer customer, BindingResult result) {
 		if (customer.getId() == null) {
 			result.addError(new ObjectError("Customer", "Id no information"));
+		}
+		if (customer.getName() == null) {
+			result.addError(new ObjectError("Customer", "Name no information"));
 		}
 		if (customer.getEmail() == null) {
 			result.addError(new ObjectError("Customer", "Email no information"));

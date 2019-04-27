@@ -39,4 +39,15 @@ public class ReportController {
 		response.setData(itemList);
 		return ResponseEntity.ok(response);
 	}
+	
+	@GetMapping(value = "/itemRent")
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@ApiOperation(value = "Relatório de Itens alugados no período semanal, com seus valores", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiResponses(@ApiResponse(code = 200, message = "ok", response = Item.class))
+	public ResponseEntity<Response<List<Item>>> reportItemRent(){
+		Response<List<Item>> response = new Response<List<Item>>();
+		List<Item> itemList = itemService.findItemRentPerPeriod();
+		response.setData(itemList);
+		return ResponseEntity.ok(response);
+	}
 }

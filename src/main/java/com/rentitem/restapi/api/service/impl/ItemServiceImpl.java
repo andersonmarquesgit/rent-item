@@ -1,6 +1,7 @@
 package com.rentitem.restapi.api.service.impl;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,15 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> findItemRentDevolutionPerPeriod() {
-		LocalDateTime startDate = LocalDateTime.now();
-		LocalDateTime finishDate = startDate.plusWeeks(1L);
+		LocalDateTime startDate = LocalDateTime.now().with(LocalTime.MIN);
+		LocalDateTime finishDate = startDate.plusWeeks(1L).with(LocalTime.MAX);
 		return this.itemRepository.findItemRentDevolutionPerPeriod(startDate, finishDate);
+	}
+
+	@Override
+	public List<Item> findItemRentPerPeriod() {
+		LocalDateTime startDate = LocalDateTime.now().with(LocalTime.MIN);
+		LocalDateTime finishDate = startDate.plusWeeks(1L).with(LocalTime.MAX);
+		return this.itemRepository.findItemRentPerPeriod(startDate, finishDate);
 	}
 }
