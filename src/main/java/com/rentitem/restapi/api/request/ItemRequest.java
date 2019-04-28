@@ -11,4 +11,5 @@ public class ItemRequest {
 	private String description;
 	private Double price;
 	private String itemTypeId;
+	private String customerId;
 }

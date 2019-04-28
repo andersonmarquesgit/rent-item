@@ -33,4 +33,8 @@ public class ItemRent {
 	
 	@Column(name = "dt_return", columnDefinition = "TIMESTAMP")
     private LocalDateTime dtReturn;
+	
+	@ManyToOne
+    @JoinColumn(name="customer_id")
+	private Customer customer;
 }

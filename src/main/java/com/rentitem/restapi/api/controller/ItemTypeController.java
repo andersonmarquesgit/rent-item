@@ -44,7 +44,7 @@ public class ItemTypeController {
 	private ItemTypeService itemTypeService;
 	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Criação de tipos de itens", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 201, message = "Novo tipo de item criado", response = ItemType.class, 
 		responseHeaders = @ResponseHeader(name = "Item", description = "Tipo de item criado", response = ItemType.class)))
@@ -84,7 +84,7 @@ public class ItemTypeController {
 	}
 
 	@PutMapping
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Atualização de tipo de item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 200, message = "Tipo de item atualizado", response = ItemType.class, 
 		responseHeaders = @ResponseHeader(name = "Location", description = "uri do tipo de item atualizado", response = String.class)))
@@ -123,7 +123,7 @@ public class ItemTypeController {
 	}
 
 	@GetMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Consultar tipo de item pelo ID")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", value = "Id do tipo de item", required = false, dataType = "string", paramType = "query", defaultValue = "1") })
@@ -144,7 +144,7 @@ public class ItemTypeController {
 	}
 
 	@DeleteMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Remover tipo de item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = ItemType.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
@@ -164,7 +164,7 @@ public class ItemTypeController {
 	}
 
 	@GetMapping(value = "{page}/{count}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Listar todos os tipos de itens")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "page", value = "Page", required = false, dataType = "string", paramType = "query", defaultValue = "0"),

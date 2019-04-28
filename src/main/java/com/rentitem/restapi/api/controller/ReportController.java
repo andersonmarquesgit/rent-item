@@ -30,7 +30,7 @@ public class ReportController {
 	private ItemService itemService;
 	
 	@GetMapping(value = "/itemDevolution")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Relatório de Itens a serem devolvidos no período semanal, com seus valores", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 200, message = "ok", response = Item.class))
 	public ResponseEntity<Response<List<Item>>> reportItemRentDevolution(){
@@ -41,7 +41,7 @@ public class ReportController {
 	}
 	
 	@GetMapping(value = "/itemRent")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Relatório de Itens alugados no período semanal, com seus valores", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 200, message = "ok", response = Item.class))
 	public ResponseEntity<Response<List<Item>>> reportItemRent(){

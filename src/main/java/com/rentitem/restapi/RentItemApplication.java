@@ -12,10 +12,10 @@ import com.rentitem.restapi.api.enums.ProfileEnum;
 import com.rentitem.restapi.api.repository.UserRepository;
 
 @SpringBootApplication
-public class RentitemApplication {
+public class RentItemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RentitemApplication.class, args);
+		SpringApplication.run(RentItemApplication.class, args);
 	}
 
 	@Bean
@@ -38,15 +38,14 @@ public class RentitemApplication {
 		admin.setProfile(ProfileEnum.ROLE_ADMIN);
 
 		User userTechnician = new User();
-		userTechnician.setEmail("sc@rentitem.com");
+		userTechnician.setEmail("user@rentitem.com");
 		userTechnician.setPassword(passwordEncoder.encode("123456"));
-		userTechnician.setProfile(ProfileEnum.ROLE_TECHNICIAN);
+		userTechnician.setProfile(ProfileEnum.ROLE_USER);
 
 
 		User find = userRepository.findByEmail("admin@rentitem.com");
-		User find1 = userRepository.findByEmail("sc@rentitem.com");
-		User find2 = userRepository.findByEmail("fc@rentitem.com");
-		if (find == null && find1 == null && find2 == null) {
+		User find1 = userRepository.findByEmail("user@rentitem.com");
+		if (find == null && find1 == null) {
 			userRepository.save(admin);
 			userRepository.save(userTechnician);
 		}

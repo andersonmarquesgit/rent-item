@@ -33,4 +33,8 @@ public class ItemBooking {
 	
 	@Column(name = "dt_schedule", columnDefinition = "TIMESTAMP")
     private LocalDateTime dtSchedule;
+	
+	@ManyToOne
+    @JoinColumn(name="customer_id")
+	private Customer customer;
 }

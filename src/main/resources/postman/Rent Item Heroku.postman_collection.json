@@ -1,0 +1,1128 @@
+{
+	"info": {
+		"_postman_id": "ad3578cc-9b63-4d70-b4f5-51109d230a23",
+		"name": "Rent Item Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Item 1\",\n\t\"price\": 150,\n\t\"itemTypeId\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/item",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"1\",\n\t\"description\": \"Item 1 alterado\",\n\t\"price\": 555,\n\t\"itemTypeId\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/item",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Item",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/item/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"item",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindById Item",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/item/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/item/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Anderson Marques\",\n\t\"email\": \"anderson@teste.com\",\n\t\"phone\": \"8399998888\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/customer",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"1\",\n\t\"name\": \"Anderson Marques Atualizado\",\n\t\"email\": \"anderson@teste.com\",\n\t\"phone\": \"8399998888\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/customer",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/customer/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customer",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindById Customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/customer/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/customer/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ItemType",
+			"item": [
+				{
+					"name": "Create ItemType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Tipo de item 1\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemType",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update ItemType",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"description\": \"Tipo de Item Alterado\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemType",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List ItemType",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemType/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemType",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindById ItemType",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemType/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ItemType",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemType/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ItemBooking",
+			"item": [
+				{
+					"name": "Create ItemBooking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"1\",\n\t\"customerId\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemBooking",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemBooking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List ItemBooking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemBooking/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemBooking",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ItemBooking",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemBooking/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemBooking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ItemRent",
+			"item": [
+				{
+					"name": "Create ItemRent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"1\",\n\t\"customerId\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemRent",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemRent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List ItemRent",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemRent/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemRent",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ItemRent",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/itemRent/1",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemRent",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "List ItemDevolution na Semana",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/report/itemDevolution",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"report",
+								"itemDevolution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List ItemRent na Semana",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/report/itemRent",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"report",
+								"itemRent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4909945d-a7e4-4aa9-bc9c-d79c96f0fb6d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user@rentitem.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/auth",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tech@gmail.com\",\n\t\"password\": \"123456\",\n\t\"profile\": \"ROLE_USER\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"2\",\n\t\"email\": \"test2@gmail.com\",\n\t\"password\": \"123456\",\n\t\"profile\": \"ROLE_USER\"\n}"
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One User By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/user/2",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Users Pages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/user/0/10",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://rent-item.herokuapp.com/api/user/2",
+							"protocol": "https",
+							"host": [
+								"rent-item",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": []
+		}
+	]
+}

@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rentitem.restapi.api.entity.Customer;
 import com.rentitem.restapi.api.entity.Item;
 import com.rentitem.restapi.api.entity.ItemBooking;
 import com.rentitem.restapi.api.request.ItemRequest;
 import com.rentitem.restapi.api.response.Response;
+import com.rentitem.restapi.api.service.CustomerService;
 import com.rentitem.restapi.api.service.ItemBookingService;
 import com.rentitem.restapi.api.service.ItemRentService;
 import com.rentitem.restapi.api.service.ItemService;
@@ -54,8 +56,11 @@ public class ItemBookingController {
 	@Autowired
 	private ItemRentService itemRentService;
 	
+	@Autowired
+	private CustomerService customerService;
+	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')") 
+	@PreAuthorize("hasAnyRole('USER')") 
 	@ApiOperation(value = "Reserva de item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 201, message = "Nova reserva de item criado", response = ItemBooking.class, 
 		responseHeaders = @ResponseHeader(name = "Item", description = "Reserva criado", response = ItemBooking.class)))
@@ -76,10 +81,12 @@ public class ItemBookingController {
 			}
 			
 			Item item = this.itemService.findById(itemRequest.getId());
+			Customer customer = this.customerService.findById(itemRequest.getCustomerId());
 			ItemBooking itemBooking = new ItemBooking();
 			itemBooking.setDtBooking(LocalDateTime.now());
 			itemBooking.setDtSchedule(LocalDateTime.now().plusWeeks(2L));//Adiciona duas semanas para o item reservado
 			itemBooking.setItem(item);
+			itemBooking.setCustomer(customer);
 			ItemBooking itemBookingPersisted = this.itemBookingService.createOrUpdate(itemBooking);
 			response.setData(itemBookingPersisted);
 		} catch (DuplicateKeyException dE) {
@@ -101,12 +108,16 @@ public class ItemBookingController {
 		}else if(this.itemRentService.findByItemId(itemRequest.getId()) != null) {
 			result.addError(new ObjectError("ItemBooking", "Item rent exists"));
 		}else if(this.itemService.findById(itemRequest.getId()) == null) {
-			result.addError(new ObjectError("ItemRent", "Item not exists"));
+			result.addError(new ObjectError("ItemBooking", "Item not exists"));
+		}
+		
+		if(itemRequest.getCustomerId() == null) {
+			result.addError(new ObjectError("ItemBooking", "Customer no information"));
 		}
 	}
 
 	@DeleteMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Remover reserva do item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = ItemBooking.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
@@ -126,7 +137,7 @@ public class ItemBookingController {
 	}
 
 	@GetMapping(value = "{page}/{count}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Listar todos os itens")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "page", value = "Page", required = false, dataType = "string", paramType = "query", defaultValue = "0"),

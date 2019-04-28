@@ -44,7 +44,7 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')") 
+	@PreAuthorize("hasAnyRole('USER')") 
 	@ApiOperation(value = "Criação de clientes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 201, message = "Novo cliente criado", response = Customer.class, 
 		responseHeaders = @ResponseHeader(name = "Cliente", description = "Cliente criado", response = Customer.class)))
@@ -91,7 +91,7 @@ public class CustomerController {
 	}
 
 	@PutMapping
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Atualização de clientes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 200, message = "Cliente atualizado", response = Customer.class, 
 		responseHeaders = @ResponseHeader(name = "Location", description = "uri do cliente atualizado", response = String.class)))
@@ -134,7 +134,7 @@ public class CustomerController {
 	}
 
 	@GetMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Consultar cliente pelo ID")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", value = "Id do cliente", required = false, dataType = "string", paramType = "query", defaultValue = "1") })
@@ -155,7 +155,7 @@ public class CustomerController {
 	}
 
 	@DeleteMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Remover cliente", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = Customer.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
@@ -175,7 +175,7 @@ public class CustomerController {
 	}
 
 	@GetMapping(value = "{page}/{count}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Listar todos os clientes")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "page", value = "Page", required = false, dataType = "string", paramType = "query", defaultValue = "0"),

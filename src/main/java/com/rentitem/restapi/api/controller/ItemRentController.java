@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rentitem.restapi.api.entity.Customer;
 import com.rentitem.restapi.api.entity.Item;
 import com.rentitem.restapi.api.entity.ItemRent;
 import com.rentitem.restapi.api.request.ItemRequest;
 import com.rentitem.restapi.api.response.Response;
+import com.rentitem.restapi.api.service.CustomerService;
 import com.rentitem.restapi.api.service.ItemBookingService;
 import com.rentitem.restapi.api.service.ItemRentService;
 import com.rentitem.restapi.api.service.ItemService;
@@ -54,8 +56,11 @@ public class ItemRentController {
 	@Autowired
 	private ItemBookingService itemBookingService;
 	
+	@Autowired
+	private CustomerService customerService;
+	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('ADMIN')") 
+	@PreAuthorize("hasAnyRole('USER')") 
 	@ApiOperation(value = "Aluguel de item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(@ApiResponse(code = 201, message = "Novo aluguel de item criado", response = ItemRent.class, 
 		responseHeaders = @ResponseHeader(name = "Item", description = "Reserva criado", response = ItemRent.class)))
@@ -76,10 +81,12 @@ public class ItemRentController {
 			}
 			
 			Item item = this.itemService.findById(itemRequest.getId());
+			Customer customer = this.customerService.findById(itemRequest.getCustomerId());
 			ItemRent itemRent = new ItemRent();
 			itemRent.setDtRent(LocalDateTime.now());
 			itemRent.setDtReturn(LocalDateTime.now().plusWeeks(2L));//Adiciona duas semanas para devolução
 			itemRent.setItem(item);
+			itemRent.setCustomer(customer);
 			ItemRent itemRentPersisted = this.itemRentService.createOrUpdate(itemRent);
 			response.setData(itemRentPersisted);
 		} catch (DuplicateKeyException dE) {
@@ -103,10 +110,14 @@ public class ItemRentController {
 		}else if(this.itemService.findById(itemRequest.getId()) == null) {
 			result.addError(new ObjectError("ItemRent", "Item not exists"));
 		}
+		
+		if(itemRequest.getCustomerId() == null) {
+			result.addError(new ObjectError("ItemRent", "Customer no information"));
+		}
 	}
 
 	@DeleteMapping(value = "{id}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Remover aluguel do item", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = ItemRent.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
@@ -126,7 +137,7 @@ public class ItemRentController {
 	}
 
 	@GetMapping(value = "{page}/{count}")
-	@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('USER')")
 	@ApiOperation(value = "Listar todos os itens alugados")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "page", value = "Page", required = false, dataType = "string", paramType = "query", defaultValue = "0"),
